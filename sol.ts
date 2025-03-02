@@ -5,6 +5,7 @@ import {
   SystemProgram,
   LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
+import {hexToBase58} from "./hex2base58";
 
 (async () => {
   // 1. Connect to the Solana cluster (mainnet, testnet, or devnet)
@@ -12,7 +13,7 @@ import {
 
   // 2. Define the sender and recipient public keys
   const senderPublicKey = new PublicKey(
-    "AxjDZNzJvVGXrZ9TMsjQeHJmhRDQEXSzR1HQLG84fmnH"
+    "6wY9pHyj8dndJ7u9fnmvnBRv63JPkjJqNiDz79thaD8f"
   );
   const recipientPublicKey = new PublicKey(
     "Czfq3xZZDmsdGdUyrNLtRhGc47cXcZtLG4crryfu44zE"
@@ -41,6 +42,7 @@ import {
   // 8. Log the unsigned raw transaction
   console.log(transaction);
   console.log(transaction.serializeMessage().toString("hex"));
+  console.log(hexToBase58(transaction.serializeMessage().toString("hex")));
 
 
   // At this point, the transaction is unsigned and can be serialized or signed

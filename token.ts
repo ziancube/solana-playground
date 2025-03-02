@@ -3,6 +3,7 @@ import {
     getAssociatedTokenAddress,
     createTransferInstruction,
 } from "@solana/spl-token";
+import { hexToBase58 } from "./hex2base58";
 
 (async () => {
   // Connect to the Solana devnet
@@ -10,7 +11,7 @@ import {
 
   // Define public keys
   const senderPublicKey = new PublicKey(
-    "AxjDZNzJvVGXrZ9TMsjQeHJmhRDQEXSzR1HQLG84fmnH"
+    "6wY9pHyj8dndJ7u9fnmvnBRv63JPkjJqNiDz79thaD8f"
   ); // Replace with sender's public key
   const recipientPublicKey = new PublicKey(
     "Cyx9uQ2p1tQyLWxTzosemWeQceAgaSFTDejtVyQbPrfi"
@@ -57,4 +58,5 @@ import {
   });
   console.log(transaction);
   console.log("Unsigned raw Transaction:", unsignedTransaction.toString("hex"));
+  console.log(hexToBase58(transaction.serializeMessage().toString("hex")));
 })();
